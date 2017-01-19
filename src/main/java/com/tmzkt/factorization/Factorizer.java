@@ -1,7 +1,8 @@
 package com.tmzkt.factorization;
 
 import java.math.BigInteger;
+import java.util.List;
 
 public interface Factorizer {
-    BigInteger[] factor(BigInteger integer);
+    List<BigInteger> factor(BigInteger integer);
 }
