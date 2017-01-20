@@ -30,14 +30,14 @@ public class TrialDivisionFactorizerTest {
 
     @Test
     public void twoReturnsTwo() {
-        List<BigInteger> primeFactos = new TrialDivisionFactorizer().factor(BigInteger.ONE);
+        List<BigInteger> primeFactos = new TrialDivisionFactorizer().factor(BigInteger.valueOf(2));
         assertEquals(1, primeFactos.size());
         assertEquals(2, primeFactos.get(0).intValue());
     }
 
     @Test
     public void twelveReturnsTwoTwoThree() {
-        List<BigInteger> primeFactos = new TrialDivisionFactorizer().factor(BigInteger.ONE);
+        List<BigInteger> primeFactos = new TrialDivisionFactorizer().factor(BigInteger.valueOf(12));
         assertEquals(3, primeFactos.size());
         assertEquals(2, primeFactos.get(0).intValue());
         assertEquals(2, primeFactos.get(1).intValue());
