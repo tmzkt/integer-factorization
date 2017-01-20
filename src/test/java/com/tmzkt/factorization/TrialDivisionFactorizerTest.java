@@ -2,11 +2,11 @@ package com.tmzkt.factorization;
 
 import org.junit.Test;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TrialDivisionFactorizerTest {
 
@@ -35,4 +35,12 @@ public class TrialDivisionFactorizerTest {
         assertEquals(2, primeFactos.get(0).intValue());
     }
 
+    @Test
+    public void twelveReturnsTwoTwoThree() {
+        List<BigInteger> primeFactos = new TrialDivisionFactorizer().factor(BigInteger.ONE);
+        assertEquals(3, primeFactos.size());
+        assertEquals(2, primeFactos.get(0).intValue());
+        assertEquals(2, primeFactos.get(1).intValue());
+        assertEquals(3, primeFactos.get(2).intValue());
+    }
 }
