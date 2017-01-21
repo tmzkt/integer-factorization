@@ -43,4 +43,11 @@ public class TrialDivisionFactorizerTest {
         assertEquals(2, primeFactos.get(1).intValue());
         assertEquals(3, primeFactos.get(2).intValue());
     }
+
+    @Test
+    public void seventeenIsPrime() {
+        List<BigInteger> primeFactos = new TrialDivisionFactorizer().factor(BigInteger.valueOf(17));
+        assertEquals(1, primeFactos.size());
+        assertEquals(17, primeFactos.get(0).intValue());
+    }
 }
