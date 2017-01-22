@@ -10,11 +10,12 @@ public class TrialDivisionFactorizer implements Factorizer {
         if (n.compareTo(BigInteger.valueOf(2)) < 0) {
             return primeFactors;
         }
-        // TODO make sure p is prime before checking against n
         for (BigInteger p = BigInteger.valueOf(2); p.multiply(p).compareTo(n) <= 0; p = p.add(BigInteger.ONE)) {
-            while (n.mod(p).compareTo(BigInteger.ZERO) == 0) {
-                primeFactors.add(p);
-                n = n.divide(p);
+            if (p.isProbablePrime(5)) { // TODO experiment with other certainty values
+                while (n.mod(p).compareTo(BigInteger.ZERO) == 0) {
+                    primeFactors.add(p);
+                    n = n.divide(p);
+                }
             }
         }
         if (n.compareTo(BigInteger.ONE) > 0) {
