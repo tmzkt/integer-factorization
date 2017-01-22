@@ -1,16 +1,24 @@
 package com.tmzkt.prime;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Primes {
-    public static List<BigInteger> primeSieve(BigInteger n) {
-        List<BigInteger> primes = new ArrayList<>();
-        if (n.compareTo(BigInteger.ONE) <= 0) {
-            return primes;
+    public static int[] primeSieve(int max) {
+        boolean[] isComposite = new boolean[max + 1];
+        for (int i = 2; i * i <= max; i++) {
+            if (!isComposite[i]) {
+                for (int j = i; i * j <= max; j++) {
+                    isComposite[i * j] = true;
+                }
+            }
         }
-
+        int numPrimes = 0;
+        for (int i = 2; i <= max; i++) {
+            if (!isComposite[i]) numPrimes++;
+        }
+        int[] primes = new int[numPrimes];
+        int index = 0;
+        for (int i = 2; i <= max; i++) {
+            if (!isComposite[i]) primes[index++] = i;
+        }
         return primes;
     }
 }
