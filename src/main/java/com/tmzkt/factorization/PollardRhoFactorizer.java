@@ -19,13 +19,14 @@ public class PollardRhoFactorizer implements Factorizer {
             x = g(x);
             y = g(g(y));
             d = n.gcd(x.subtract(y).abs());
-            if (d.compareTo(n) == 0) {
-                return primeFactors;
-            } else {
-                primeFactors.add(d);
-            }
+        }
+        if (d.compareTo(n) == 0) {
+            primeFactors.add(d);
+            return primeFactors;
         }
 
+        primeFactors.add(d);
+        primeFactors.addAll(factor(n.divide(d)));
         return primeFactors;
     }
 
