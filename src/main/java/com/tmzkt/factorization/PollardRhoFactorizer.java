@@ -15,21 +15,30 @@ public class PollardRhoFactorizer implements Factorizer {
             return primeFactors;
         }
 
+        BigInteger divisor = rho(n);
+        if (divisor == null) {
+            primeFactors.addAll(trialDivisionFactorizer.factor(n)); // failed, so use trial division instead
+            return primeFactors;
+        }
+
+        primeFactors.add(divisor);
+        primeFactors.addAll(factor(n.divide(divisor)));
+        Collections.sort(primeFactors);
+        return primeFactors;
+    }
+
+    private static BigInteger rho(BigInteger n) {
         BigInteger x = BigInteger.valueOf(2), y = BigInteger.valueOf(2), d = BigInteger.ONE;
         while (d.compareTo(BigInteger.ONE) == 0) {
             x = g(x);
             y = g(g(y));
             d = n.gcd(x.subtract(y).abs());
         }
-        if (d.compareTo(n) == 0) {
-            primeFactors.addAll(trialDivisionFactorizer.factor(n)); // failed, so use trial division instead
-            return primeFactors;
-        }
 
-        primeFactors.add(d);
-        primeFactors.addAll(factor(n.divide(d)));
-        Collections.sort(primeFactors);
-        return primeFactors;
+        if (d.compareTo(n) == 0) {
+            return null;
+        }
+        return d;
     }
 
     private static BigInteger g(BigInteger x) {
