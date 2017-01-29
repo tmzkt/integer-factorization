@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrialDivisionFactorizer implements Factorizer {
+    @Override
     public List<BigInteger> factor(BigInteger n) {
         List<BigInteger> primeFactors = new ArrayList<>();
         if (n.compareTo(BigInteger.valueOf(2)) < 0) {
