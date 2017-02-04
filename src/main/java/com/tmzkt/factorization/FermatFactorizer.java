@@ -7,6 +7,15 @@ import java.util.List;
 public class FermatFactorizer implements Factorizer {
     @Override
     public List<BigInteger> factor(BigInteger n) {
+        List<BigInteger> primeFactors = new ArrayList<>();
+        if (n.compareTo(BigInteger.valueOf(2)) < 0) {
+            return primeFactors;
+        }
+
+        return fermat(n);
+    }
+
+    private static List<BigInteger> fermat(BigInteger n) {
         List<BigInteger> factors = new ArrayList<BigInteger>();
         BigInteger a = sqrt(n); // TODO take ceiling
         BigInteger b2 = a.multiply(a).subtract(n);
