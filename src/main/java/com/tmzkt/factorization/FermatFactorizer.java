@@ -12,7 +12,15 @@ public class FermatFactorizer implements Factorizer {
             return primeFactors;
         }
 
-        return fermat(n);
+        List<BigInteger> fermatResults = fermat(n);
+        while (!fermatResults.isEmpty()){
+            for (BigInteger fermatResult : fermatResults) {
+                primeFactors.add(fermatResult);
+                n = n.divide(fermatResult);
+            }
+            fermatResults = fermat(n);
+        }
+        return primeFactors;
     }
 
     private static List<BigInteger> fermat(BigInteger n) {
