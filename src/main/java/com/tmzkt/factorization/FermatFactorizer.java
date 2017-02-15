@@ -20,6 +20,9 @@ public class FermatFactorizer implements Factorizer {
             }
             fermatResults = fermat(n);
         }
+        if (n.compareTo(BigInteger.ONE) > 0) {
+            primeFactors.addAll(new TrialDivisionFactorizer().factor(n));
+        }
         return primeFactors;
     }
 
