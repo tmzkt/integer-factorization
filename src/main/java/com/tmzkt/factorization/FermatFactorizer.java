@@ -11,17 +11,13 @@ public class FermatFactorizer implements Factorizer {
         if (n.compareTo(BigInteger.valueOf(2)) < 0) {
             return primeFactors;
         }
-        if (n.mod(BigInteger.valueOf(2)).compareTo(BigInteger.ZERO) == 0) {
-            throw new IllegalArgumentException("n must be odd to use fermat");
-        }
 
-        List<BigInteger> fermatResults = fermat(n);
-        while (!fermatResults.isEmpty()){
-            for (BigInteger fermatResult : fermatResults) {
-                primeFactors.add(fermatResult);
-                n = n.divide(fermatResult);
-            }
-            fermatResults = fermat(n);
+        // TODO maybe we could remove all factors of two here to guarantee the number is odd from now on
+        BigInteger fermatFactor = fermat(n);
+        while (n.compareTo(BigInteger.ONE) > 0) {
+            primeFactors.add(fermatFactor);
+            n = n.divide(fermatFactor);
+            fermatFactor = fermat(n);
         }
         if (n.compareTo(BigInteger.ONE) > 0) {
             primeFactors.addAll(new TrialDivisionFactorizer().factor(n));
@@ -29,19 +25,22 @@ public class FermatFactorizer implements Factorizer {
         return primeFactors;
     }
 
-    private static List<BigInteger> fermat(BigInteger n) {
-        List<BigInteger> factors = new ArrayList<>();
-        BigInteger a = sqrt(n); // TODO take ceiling
+    private static BigInteger fermat(BigInteger n) {
+        if (n.mod(BigInteger.valueOf(2)).compareTo(BigInteger.ZERO) == 0) {
+            throw new IllegalArgumentException("n must be odd to use fermat");
+        }
+        BigInteger a = sqrt(n);
         BigInteger b2 = a.multiply(a).subtract(n);
         while (!isSquare(b2)) {
             a = a.add(BigInteger.ONE);
             b2 = a.multiply(a).subtract(n);
         }
         BigInteger r1 = a.subtract(sqrt(b2));
-        BigInteger r2 = n.divide(r1);
-        factors.add(r1);
-        factors.add(r2);
-        return factors;
+
+        if (r1.compareTo(BigInteger.ONE) == 0) {
+            return n; // n is prime
+        }
+        return r1;
     }
 
     // TODO move some of these methods into a more appropriate class
@@ -53,7 +52,10 @@ public class FermatFactorizer implements Factorizer {
             while (!isSqrt(n, root)) {
                 root = root.add(n.divide(root)).divide(BigInteger.valueOf(2));
             }
-            return root;
+            if (root.pow(2).compareTo(n) == 0) {
+                return root;
+            }
+            return root.add(BigInteger.ONE);
         } else {
             throw new ArithmeticException("square root of negative number");
         }
