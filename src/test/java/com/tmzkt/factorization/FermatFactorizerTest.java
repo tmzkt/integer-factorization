@@ -28,20 +28,9 @@ public class FermatFactorizerTest {
         assertTrue(primeFactos.isEmpty());
     }
 
-    @Test
-    public void twoReturnsTwo() {
-        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.valueOf(2));
-        assertEquals(1, primeFactos.size());
-        assertEquals(2, primeFactos.get(0).intValue());
-    }
-
-    @Test
-    public void twelveReturnsTwoTwoThree() {
-        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.valueOf(12));
-        assertEquals(3, primeFactos.size());
-        assertEquals(2, primeFactos.get(0).intValue());
-        assertEquals(2, primeFactos.get(1).intValue());
-        assertEquals(3, primeFactos.get(2).intValue());
+    @Test(expected = IllegalArgumentException.class)
+    public void evenNumberUnsupported() {
+        new FermatFactorizer().factor(BigInteger.valueOf(2));
     }
 
     @Test

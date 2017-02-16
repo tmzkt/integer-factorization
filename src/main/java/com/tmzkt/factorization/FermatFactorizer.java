@@ -11,6 +11,9 @@ public class FermatFactorizer implements Factorizer {
         if (n.compareTo(BigInteger.valueOf(2)) < 0) {
             return primeFactors;
         }
+        if (n.mod(BigInteger.valueOf(2)).compareTo(BigInteger.ZERO) == 0) {
+            throw new IllegalArgumentException("n must be odd to use fermat");
+        }
 
         List<BigInteger> fermatResults = fermat(n);
         while (!fermatResults.isEmpty()){
