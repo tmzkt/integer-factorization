@@ -30,7 +30,7 @@ public class FermatFactorizerTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void evenNumberUnsupported() {
-        new FermatFactorizer().factor(BigInteger.valueOf(2));
+        new FermatFactorizer().factor(BigInteger.valueOf(22));
     }
 
     @Test
