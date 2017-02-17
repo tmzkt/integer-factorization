@@ -2,6 +2,7 @@ package com.tmzkt.factorization;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FermatFactorizer implements Factorizer {
@@ -22,6 +23,7 @@ public class FermatFactorizer implements Factorizer {
         if (n.compareTo(BigInteger.ONE) > 0) {
             primeFactors.addAll(new TrialDivisionFactorizer().factor(n));
         }
+        Collections.sort(primeFactors);
         return primeFactors;
     }
 
