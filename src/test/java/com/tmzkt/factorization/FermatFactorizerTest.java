@@ -34,6 +34,23 @@ public class FermatFactorizerTest {
     }
 
     @Test
+    public void nineReturnsThreeThree() {
+        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.valueOf(9));
+        assertEquals(2, primeFactos.size());
+        assertEquals(3, primeFactos.get(0).intValue());
+        assertEquals(3, primeFactos.get(1).intValue());
+    }
+
+    @Test
+    public void seventyFiveReturnsThreeFiveFive() {
+        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.valueOf(75));
+        assertEquals(3, primeFactos.size());
+        assertEquals(3, primeFactos.get(0).intValue());
+        assertEquals(5, primeFactos.get(1).intValue());
+        assertEquals(5, primeFactos.get(2).intValue());
+    }
+
+    @Test
     public void seventeenIsPrime() {
         List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.valueOf(17));
         assertEquals(1, primeFactos.size());
