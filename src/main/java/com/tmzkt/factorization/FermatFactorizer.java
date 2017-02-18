@@ -14,14 +14,13 @@ public class FermatFactorizer implements Factorizer {
         }
 
         // TODO maybe we could remove all factors of two here to guarantee the number is odd from now on
-        BigInteger fermatFactor = fermat(n);
         while (n.compareTo(BigInteger.ONE) > 0) {
+            BigInteger fermatFactor = fermat(n);
             primeFactors.add(fermatFactor);
             n = n.divide(fermatFactor);
-            fermatFactor = fermat(n);
         }
         if (n.compareTo(BigInteger.ONE) > 0) {
-            primeFactors.addAll(new TrialDivisionFactorizer().factor(n));
+            primeFactors.addAll(new TrialDivisionFactorizer().factor(n)); // TODO is this necessary?
         }
         Collections.sort(primeFactors);
         return primeFactors;
