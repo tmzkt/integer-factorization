@@ -12,20 +12,20 @@ public class FermatFactorizerTest {
 
     @Test
     public void negativeNumberReturnsEmptyArray() {
-        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.valueOf(-5));
-        assertTrue(primeFactos.isEmpty());
+        List<BigInteger> primeFactors = new FermatFactorizer().factor(BigInteger.valueOf(-5));
+        assertTrue(primeFactors.isEmpty());
     }
 
     @Test
     public void zeroReturnsEmptyArray() {
-        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.ZERO);
-        assertTrue(primeFactos.isEmpty());
+        List<BigInteger> primeFactors = new FermatFactorizer().factor(BigInteger.ZERO);
+        assertTrue(primeFactors.isEmpty());
     }
 
     @Test
     public void oneReturnsEmptyArray() {
-        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.ONE);
-        assertTrue(primeFactos.isEmpty());
+        List<BigInteger> primeFactors = new FermatFactorizer().factor(BigInteger.ONE);
+        assertTrue(primeFactors.isEmpty());
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -35,25 +35,25 @@ public class FermatFactorizerTest {
 
     @Test
     public void nineReturnsThreeThree() {
-        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.valueOf(9));
-        assertEquals(2, primeFactos.size());
-        assertEquals(3, primeFactos.get(0).intValue());
-        assertEquals(3, primeFactos.get(1).intValue());
+        List<BigInteger> primeFactors = new FermatFactorizer().factor(BigInteger.valueOf(9));
+        assertEquals(2, primeFactors.size());
+        assertEquals(3, primeFactors.get(0).intValue());
+        assertEquals(3, primeFactors.get(1).intValue());
     }
 
     @Test
     public void seventyFiveReturnsThreeFiveFive() {
-        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.valueOf(75));
-        assertEquals(3, primeFactos.size());
-        assertEquals(3, primeFactos.get(0).intValue());
-        assertEquals(5, primeFactos.get(1).intValue());
-        assertEquals(5, primeFactos.get(2).intValue());
+        List<BigInteger> primeFactors = new FermatFactorizer().factor(BigInteger.valueOf(75));
+        assertEquals(3, primeFactors.size());
+        assertEquals(3, primeFactors.get(0).intValue());
+        assertEquals(5, primeFactors.get(1).intValue());
+        assertEquals(5, primeFactors.get(2).intValue());
     }
 
     @Test
     public void seventeenIsPrime() {
-        List<BigInteger> primeFactos = new FermatFactorizer().factor(BigInteger.valueOf(17));
-        assertEquals(1, primeFactos.size());
-        assertEquals(17, primeFactos.get(0).intValue());
+        List<BigInteger> primeFactors = new FermatFactorizer().factor(BigInteger.valueOf(17));
+        assertEquals(1, primeFactors.size());
+        assertEquals(17, primeFactors.get(0).intValue());
     }
 }
