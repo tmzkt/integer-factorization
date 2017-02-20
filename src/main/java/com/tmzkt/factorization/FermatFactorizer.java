@@ -24,9 +24,7 @@ public class FermatFactorizer implements Factorizer {
             primeFactors.add(fermatFactor);
             n = n.divide(fermatFactor);
         }
-        if (n.compareTo(BigInteger.ONE) > 0) {
-            primeFactors.addAll(new TrialDivisionFactorizer().factor(n)); // TODO is this necessary?
-        }
+
         Collections.sort(primeFactors);
         return primeFactors;
     }
