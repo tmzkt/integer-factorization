@@ -28,9 +28,11 @@ public class FermatFactorizerTest {
         assertTrue(primeFactors.isEmpty());
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void evenNumberUnsupported() {
-        new FermatFactorizer().factor(BigInteger.valueOf(22));
+    @Test
+    public void twoReturnsTwo() {
+        List<BigInteger> primeFactos = new TrialDivisionFactorizer().factor(BigInteger.valueOf(2));
+        assertEquals(1, primeFactos.size());
+        assertEquals(2, primeFactos.get(0).intValue());
     }
 
     @Test
@@ -42,12 +44,12 @@ public class FermatFactorizerTest {
     }
 
     @Test
-    public void seventyFiveReturnsThreeFiveFive() {
-        List<BigInteger> primeFactors = new FermatFactorizer().factor(BigInteger.valueOf(75));
-        assertEquals(3, primeFactors.size());
-        assertEquals(3, primeFactors.get(0).intValue());
-        assertEquals(5, primeFactors.get(1).intValue());
-        assertEquals(5, primeFactors.get(2).intValue());
+    public void twelveReturnsTwoTwoThree() {
+        List<BigInteger> primeFactos = new TrialDivisionFactorizer().factor(BigInteger.valueOf(12));
+        assertEquals(3, primeFactos.size());
+        assertEquals(2, primeFactos.get(0).intValue());
+        assertEquals(2, primeFactos.get(1).intValue());
+        assertEquals(3, primeFactos.get(2).intValue());
     }
 
     @Test
@@ -55,5 +57,14 @@ public class FermatFactorizerTest {
         List<BigInteger> primeFactors = new FermatFactorizer().factor(BigInteger.valueOf(17));
         assertEquals(1, primeFactors.size());
         assertEquals(17, primeFactors.get(0).intValue());
+    }
+
+    @Test
+    public void seventyFiveReturnsThreeFiveFive() {
+        List<BigInteger> primeFactors = new FermatFactorizer().factor(BigInteger.valueOf(75));
+        assertEquals(3, primeFactors.size());
+        assertEquals(3, primeFactors.get(0).intValue());
+        assertEquals(5, primeFactors.get(1).intValue());
+        assertEquals(5, primeFactors.get(2).intValue());
     }
 }
