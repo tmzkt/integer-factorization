@@ -13,7 +13,12 @@ public class FermatFactorizer implements Factorizer {
             return primeFactors;
         }
 
-        // TODO maybe we could remove all factors of two here to guarantee the number is odd from now on
+        // Process all factors of two because Fermat expects an odd integer
+        while(n.mod(BigInteger.valueOf(2)).compareTo(BigInteger.ZERO) == 0) {
+            primeFactors.add(BigInteger.valueOf(2));
+            n = n.divide(BigInteger.valueOf(2));
+        }
+
         while (n.compareTo(BigInteger.ONE) > 0) {
             BigInteger fermatFactor = fermat(n);
             primeFactors.add(fermatFactor);
