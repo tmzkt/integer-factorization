@@ -19,7 +19,9 @@ public class Main {
             }
         }
 
+        long timestamp = System.currentTimeMillis();
         System.out.println(new TrialDivisionFactorizer().factor(number));
+        System.out.println((System.currentTimeMillis() - timestamp) + "ms elapsed");
 
         scanner.nextLine();
     }
