@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 public class DivisibilityRuleTest {
     private DivisibilityRule divisibilityRule = new DivisibilityRule();
 
+    //region divisibility by 2
     @Test
     public void ZeroDivisibleBy2() {
         assertTrue(divisibilityRule.divisibleBy2(BigInteger.ZERO));
@@ -43,7 +44,9 @@ public class DivisibilityRuleTest {
     public void LargeEvenNumberDivisibleBy2() {
         assertTrue(divisibilityRule.divisibleBy2(BigInteger.valueOf(35487946948L)));
     }
+    //endregion
 
+    //region divisibility by 3
     @Test
     public void ZeroDivisibleBy3() {
         assertTrue(divisibilityRule.divisibleBy3(BigInteger.ZERO));
@@ -78,4 +81,5 @@ public class DivisibilityRuleTest {
     public void LargeNumberDivisibleBy3() {
         assertTrue(divisibilityRule.divisibleBy3(BigInteger.valueOf(354879469482L)));
     }
+    //endregion
 }
