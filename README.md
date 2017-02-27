@@ -1,7 +1,7 @@
 # integer-factorization
-Factors a number into a product of prime integers using various methods
-Note that this project is incomplete as some of the methods are partially implemented
-PLease see the "TODO"'s scattered throughout the code
+Factors a number into a product of prime integers using well-known methods
+The output of this project is an executable that will factor a given number by using the Trial Division method.
+The primary intention of this project is to make source code available for these algorithms.
 
 ## Methods
 1. Trial Division
